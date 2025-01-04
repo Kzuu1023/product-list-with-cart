@@ -1,74 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png"
+        />
+        <title>Frontend Mentor | Product list with cart</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="viewport">
+            <section class="products__container">
+                <h1>Desserts</h1>
+                <div class="product__menu">
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-waffle-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p class="category">Waffle</p>
+                            <span>Waffle with Berries</span>
+                            <p class="price">$6.50</p>
+                        </div>
+                        <div class="button cart__container">
+                            <img
+                                src="assets/images/icon-add-to-cart.svg"
+                                alt=""
+                            />
+                            <span class="add-to-cart">Add to Cart</span>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-creme-brulee-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p class="category">Crème Brûlée</p>
+                            <span> Vanilla Bean Crème Brûlée</span>
+                            <p class="price">$7.00</p>
+                        </div>
+                        <div class="button cart__container">
+                            <img
+                                src="assets/images/icon-add-to-cart.svg"
+                                alt=""
+                            />
+                            <span class="add-to-cart">Add to Cart</span>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-macaron-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p class="category">Macaron</p>
+                            <span> Macaron Mix of Five</span>
+                            <p class="price">$8.00</p>
+                        </div>
+                        <div class="button cart__container">
+                            <img
+                                src="assets/images/icon-add-to-cart.svg"
+                                alt=""
+                            />
+                            <span class="add-to-cart">Add to Cart</span>
+                        </div>
+                    </div>
+                </div>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Product list with cart</title>
+                <!-- <div class="product__menu">
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-tiramisu-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Tiramisu</p>
+                            <span> Classic Tiramisu</span>
+                            <p>$5.50</p>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-baklava-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Baklava</p>
+                            <span>Pistachio Baklava</span>
+                            <p>$4.00</p>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-meringue-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Pie</p>
+                            <span>Lemon Meringue Pie</span>
+                            <p>$5.00</p>
+                        </div>
+                    </div>
+                </div> -->
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+                <!-- <div class="product__menu">
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-cake-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Cake</p>
+                            <span>Red Velvet Cake</span>
+                            <p>$4.50</p>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-brownie-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Brownie</p>
+                            <span>Salted Caramel Brownie</span>
+                            <p>$4.50</p>
+                        </div>
+                    </div>
+                    <div class="products__list">
+                        <img
+                            src="assets/images/image-panna-cotta-desktop.jpg"
+                            alt=""
+                        />
+                        <div class="products__description">
+                            <p>Panna Cotta</p>
+                            <span>Vanilla Panna Cotta</span>
+                            <p>$6.50</p>
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+        </main>
 
-  Desserts
+        <!-- 
+  Your Cart ( Quantity) Your added items will appear here -->
 
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
-
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (<!-- Quantity -->)
-  Your added items will appear here
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        <!-- <div class="attribution">
+            Challenge by
+            <a href="https://www.frontendmentor.io?ref=challenge"
+                >Frontend Mentor</a
+            >. Coded by <a href="#">Your Name Here</a>.
+        </div> -->
+    </body>
 </html>
