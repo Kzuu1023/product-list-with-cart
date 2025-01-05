@@ -53,7 +53,7 @@ img {
     width: 100%;
     display: flex;
     margin: auto;
-    padding: 5rem;
+    padding: 4rem;
 }
 
 .products__container {
@@ -123,7 +123,7 @@ img {
     flex-direction: column;
     align-items: center;
     background-color: var(--white);
-    padding: 1rem 1.8rem;
+    padding: 1.2rem 1.8rem;
     margin-left: 0.8rem;
     border-radius: 0.5rem;
 }
@@ -131,19 +131,19 @@ img {
 #cart h2 {
     align-self: self-start;
     color: var(--red);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 #cart img {
-    width: 50%;
+    width: 40%;
     margin-bottom: 1rem;
 }
 
 #cart p {
-    font-size: var(--font-size-200);
+    font-size: var(--font-size-500);
     font-weight: 600;
     color: var(--rose-500);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .attribution {
@@ -152,4 +152,53 @@ img {
 }
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+/* @media only screen and (max-width: 670px) {
+} */
+
+@media only screen and (max-width: 450px) {
+    .viewport {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .products__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .products__container .product__menu {
+        flex-direction: column;
+    }
+
+    .product__img-container {
+        display: flex;
+        width: 100%; /* Set the desired width for the container */
+        height: 16rem; /* Set the desired height for the container */
+        overflow: hidden; /* Ensures any overflowing content is hidden */
+        position: relative;
+        border-radius: 0.5rem;
+    }
+
+    .product__img-container img {
+        width: 100%; /* Makes the image responsive to the container's width */
+        height: auto; /* Keeps the image's aspect ratio */
+        position: absolute;
+        top: 50%; /* Center the image vertically */
+        left: 50%; /* Center the image horizontally */
+        transform: translate(-50%, -50%); /* Perfect centering */
+    }
+
+    .button {
+        top: 67%;
+        left: 26%;
+    }
+
+    #cart {
+        width: 100%;
+        margin: auto;
+    }
 }
