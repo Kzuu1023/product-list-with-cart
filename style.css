@@ -62,61 +62,63 @@ img {
     gap: 1.5rem;
 }
 
-.products__container .product__menu {
+.products__container h1 {
+    font-size: var(--font-size-700);
+    grid-column: 1 / 4;
+}
+
+.products__menu {
     width: 100%;
     display: flex;
     gap: 1rem;
     grid-column: 2 / 2;
 }
 
-.products__container h1 {
-    font-size: var(--font-size-700);
-    grid-column: 1 / 4;
-}
-
-.product__menu .products__list {
+.products__menu-item {
     position: relative;
 }
 
-.products__list .cart__container {
+.menu__description {
+    margin-top: 2rem;
+}
+
+.menu__description .category {
+    color: var(--rose-300);
+}
+
+.menu__description span {
+    color: var(--rose-900);
+    font-weight: var(--font-weight-bold);
+}
+
+.menu__description .price {
+    color: var(--red);
+}
+
+.menu__item-button {
+    display: flex;
+    align-items: center;
     background-color: var(--white);
     padding: 0.6rem 1.8rem;
     border: solid 1px var(--rose-300);
     border-radius: 2.5rem;
     gap: 0.5rem;
-}
-
-.button {
-    display: flex;
-    align-items: center;
     position: absolute;
     top: 67%;
-    left: 20%;
+    left: 22%;
 }
 
-.button:hover {
-    border: 1px solid var(--red);
-    color: var(--red);
+.menu__item-button img {
+    width: inherit;
 }
-.cart__container span {
+
+.menu__item-button span {
     text-wrap: nowrap;
-
     font-weight: var(--font-weight-normal);
 }
 
-.products__list .products__description {
-    margin-top: 2rem;
-}
-
-.products__description .category {
-    color: var(--rose-300);
-}
-
-.products__description span {
-    color: var(--rose-900);
-    font-weight: var(--font-weight-bold);
-}
-.products__description .price {
+.menu__item-button:hover {
+    border: 1px solid var(--red);
     color: var(--red);
 }
 
@@ -150,6 +152,14 @@ img {
     margin-bottom: 2rem;
 }
 
+.button.amount {
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 67%;
+    left: 20%;
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
@@ -174,11 +184,11 @@ img {
         gap: 1.5rem;
     }
 
-    .products__container .product__menu {
+    .products__menu {
         flex-direction: column;
     }
 
-    .product__img-container {
+    .menu__img {
         display: flex;
         width: 100%;
         height: 16rem;
@@ -187,7 +197,7 @@ img {
         border-radius: 0.5rem;
     }
 
-    .product__img-container img {
+    .menu__img img {
         width: 100%;
         height: auto;
         position: absolute;
