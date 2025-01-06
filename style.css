@@ -36,7 +36,7 @@
 
 body {
     font-family: var(--font-family-default);
-    background-color: var(--white);
+    background-color: var(--rose-50);
     cursor: pointer;
 }
 
@@ -51,6 +51,7 @@ img {
 
 .viewport {
     width: 100%;
+    display: flex;
     margin: auto;
     padding: 5rem;
 }
@@ -62,7 +63,7 @@ img {
 }
 
 .products__container .product__menu {
-    width: 70%;
+    width: 100%;
     display: flex;
     gap: 1rem;
     grid-column: 2 / 2;
@@ -113,6 +114,36 @@ img {
 }
 .products__description .price {
     color: var(--red);
+}
+
+#cart {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    padding: 1rem 1.8rem;
+    margin-left: 0.8rem;
+    border-radius: 0.5rem;
+}
+
+#cart h2 {
+    align-self: self-start;
+    color: var(--red);
+    margin-bottom: 1rem;
+}
+
+#cart img {
+    width: 50%;
+    margin-bottom: 1rem;
+}
+
+#cart p {
+    font-size: var(--font-size-200);
+    font-weight: 600;
+    color: var(--rose-500);
+    margin-bottom: 1rem;
 }
 
 .attribution {
