@@ -15,31 +15,35 @@
     </head>
     <body>
         <main class="viewport">
-            <section class="products__container">
-                <h1>Desserts</h1>
+            <section class="products">
+                <h1 class="products__title">Desserts</h1>
                 <div class="products__menu">
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-waffle-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Waffle</p>
-                            <span>Waffle with Berries</span>
-                            <p class="price">$6.50</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Waffle</p>
+                            <span class="products__menu-item-name"
+                                >Waffle with Berries</span
+                            >
+                            <p class="products__menu-item-price">$6.50</p>
                         </div>
-                        <button class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
                         </button>
 
-                        <div class="button amount">
-                            <div class="decrement">
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -53,8 +57,8 @@
                                     />
                                 </svg>
                             </div>
-                            <p>1</p>
-                            <div class="increment">
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -71,26 +75,32 @@
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-creme-brulee-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Crème Brûlée</p>
-                            <span> Vanilla Bean Crème Brûlée</span>
-                            <p class="price">$7.00</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">
+                                Crème Brûlée
+                            </p>
+                            <span class="products__menu-item-name"
+                                >Vanilla Bean Crème Brûlée</span
+                            >
+                            <p class="products__menu-item-price">$7.00</p>
                         </div>
-                        <button class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
                         </button>
-                        <div class="button amount">
-                            <div class="decrement">
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -104,8 +114,8 @@
                                     />
                                 </svg>
                             </div>
-                            <p>1</p>
-                            <div class="increment">
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -122,26 +132,30 @@
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-macaron-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Macaron</p>
-                            <span> Macaron Mix of Five</span>
-                            <p class="price">$8.00</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Macaron</p>
+                            <span class="products__menu-item-name"
+                                >Macaron Mix of Five</span
+                            >
+                            <p class="products__menu-item-price">$8.00</p>
                         </div>
-                        <button class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
                         </button>
-                        <div class="button amount">
-                            <div class="decrement">
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -155,8 +169,8 @@
                                     />
                                 </svg>
                             </div>
-                            <p>1</p>
-                            <div class="increment">
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="10"
@@ -176,135 +190,352 @@
 
                 <div class="products__menu">
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-tiramisu-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Tiramisu</p>
-                            <span> Classic Tiramisu</span>
-                            <p class="price">$5.50</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Tiramisu</p>
+                            <span class="products__menu-item-name"
+                                >Classic Tiramisu</span
+                            >
+                            <p class="products__menu-item-price">$5.50</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-baklava-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Baklava</p>
-                            <span>Pistachio Baklava</span>
-                            <p class="price">$4.00</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Baklava</p>
+                            <span class="products__menu-item-name"
+                                >Pistachio Baklava</span
+                            >
+                            <p class="products__menu-item-price">$4.00</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-meringue-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Pie</p>
-                            <span>Lemon Meringue Pie</span>
-                            <p class="price">$5.00</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Pie</p>
+                            <span class="products__menu-item-name"
+                                >Lemon Meringue Pie</span
+                            >
+                            <p class="products__menu-item-price">$5.00</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="products__menu">
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-cake-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Cake</p>
-                            <span>Red Velvet Cake</span>
-                            <p class="price">$4.50</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Cake</p>
+                            <span class="products__menu-item-name"
+                                >Red Velvet Cake</span
+                            >
+                            <p class="products__menu-item-price">$4.50</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-brownie-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Brownie</p>
-                            <span>Salted Caramel Brownie</span>
-                            <p class="price">$4.50</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">Brownie</p>
+                            <span class="products__menu-item-name"
+                                >Salted Caramel Brownie</span
+                            >
+                            <p class="products__menu-item-price">$4.50</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div class="products__menu-item">
-                        <div class="menu__img">
+                        <div class="products__menu-item-img">
                             <img
                                 src="assets/images/image-panna-cotta-desktop.jpg"
                                 alt=""
                             />
                         </div>
-                        <div class="menu__description">
-                            <p class="category">Panna Cotta</p>
-                            <span>Vanilla Panna Cotta</span>
-                            <p class="price">$6.50</p>
+                        <div class="products__menu-item-description">
+                            <p class="products__menu-item-category">
+                                Panna Cotta
+                            </p>
+                            <span class="products__menu-item-name"
+                                >Vanilla Panna Cotta</span
+                            >
+                            <p class="products__menu-item-price">$6.50</p>
                         </div>
-                        <div class="menu__item-button">
+                        <button class="products__menu-item-button">
                             <img
                                 src="assets/images/icon-add-to-cart.svg"
                                 alt=""
                             />
-                            <span class="add-to-cart">Add to Cart</span>
+                            <span class="products__menu-item-button-text"
+                                >Add to Cart</span
+                            >
+                        </button>
+                        <div class="products__menu-item-amount">
+                            <div class="products__menu-item-amount-decrement">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="2"
+                                    fill="none"
+                                    viewBox="0 0 10 2"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M0 .375h10v1.25H0V.375Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="products__menu-item-amount-value">1</p>
+                            <div class="products__menu-item-amount-increment">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    fill="none"
+                                    viewBox="0 0 10 10"
+                                >
+                                    <path
+                                        fill="#fff"
+                                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                                    />
+                                </svg>
+                            </div>
                         </div>
+                        s
                     </div>
                 </div>
             </section>
 
             <div id="cart">
-                <h2>Your Cart (0)</h2>
-                <img src="assets/images/illustration-empty-cart.svg" alt="" />
-                <p>Your added items will appear here</p>
+                <h2 class="cart__title">Your Cart (0)</h2>
+                <img
+                    class="cart__image"
+                    src="assets/images/illustration-empty-cart.svg"
+                    alt=""
+                />
+                <p class="cart__message">Your added items will appear here</p>
             </div>
         </main>
 
