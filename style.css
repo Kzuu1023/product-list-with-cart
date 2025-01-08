@@ -146,6 +146,7 @@ img {
 }
 
 .products__menu-item-amount-value {
+    color: var(--white);
     margin-inline: 0.85rem;
 }
 
