@@ -527,14 +527,53 @@
                 </div>
             </section>
 
-            <div id="cart">
-                <h2 class="cart__title">Your Cart (0)</h2>
-                <img
-                    class="cart__image"
-                    src="assets/images/illustration-empty-cart.svg"
-                    alt=""
-                />
-                <p class="cart__message">Your added items will appear here</p>
+            <div class="cart__card">
+                <div id="cart__items">
+                    <h2 class="cart__title">Your Cart (0)</h2>
+                    <img
+                        class="cart__image"
+                        src="assets/images/illustration-empty-cart.svg"
+                        alt=""
+                    />
+                    <p class="cart__message">
+                        Your added items will appear here
+                    </p>
+                </div>
+
+                <div id="cart__order">
+                    <h2 class="cart__title">
+                        Your Cart <span class="number">(0)</span>
+                    </h2>
+                    <div class="cart__order-information">
+                        <div class="cart__order-summary">
+                            <h3 class="cart__order-name"></h3>
+                            <div class="cart__order-details">
+                                <p class="cart__order-selected-quantity"></p>
+                                <p class="cart__order-selected-price"></p>
+                                <p class="cart__order-selected-amount"></p>
+                            </div>
+                        </div>
+                        <div class="cart__order-total">
+                            <div class="cart__order-total-items">
+                                <p class="cart__order-text">Order Total</p>
+                                <p class="cart__order-total-order"></p>
+                            </div>
+                            <div class="cart__order-announcement">
+                                <img
+                                    class="cart__order-image"
+                                    src="assets/images/icon-carbon-neutral.svg"
+                                    alt=""
+                                />
+                                <p>this is a <b>carbon-neutral</b> delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart__order-confirmation">
+                        <button class="cart__order-button">
+                            Confirm Order
+                        </button>
+                    </div>
+                </div>
             </div>
         </main>
 
