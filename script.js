@@ -10,36 +10,35 @@ let minusAmount = document.querySelectorAll(
 );
 let quantity = document.querySelectorAll(".products__menu-item-amount-value");
 
-addToCart.forEach((add, index) => {
-    add.addEventListener("click", function () {
+addToCart.forEach((addCart, index) => {
+    addCart.addEventListener("click", function () {
         const changeAmounts = changeAmount[index];
         const menuImgs = menuImg[index];
 
         changeAmounts.style.display = "flex";
-        add.style.display = "none";
+        addCart.style.display = "none";
         changeAmounts.classList.add("selected");
         menuImgs.style.border = "2px solid var(--red)";
     });
 });
 
 function updateQuantity() {
+    let totalPrice = 0;
+    let totalOrder = 0;
     let price = Array.from(origPrice).map((priceElement) =>
         parseFloat(priceElement.innerText.replace(/[^0-9.-]+/g, ""))
     );
 
-    // let price = parseFloat(
-    //     origPrice[index].innerText.replace(/[^0-9.-]+/g, "")
-    // );
-
-    let totalPrice = 0;
     addAmount.forEach((increment, index) => {
         increment.addEventListener("click", function () {
             let currentQuantity = parseFloat(quantity[index].innerText);
             currentQuantity += 1;
-
             quantity[index].innerText = currentQuantity;
+
             totalPrice = currentQuantity * price[index];
             console.log(totalPrice.toFixed(2));
+            totalOrder = totalPrice;
+            console.log("The total amount: ", totalOrder.toFixed(2));
         });
     });
 
@@ -49,6 +48,11 @@ function updateQuantity() {
             if (currentQuantity > 0) {
                 currentQuantity -= 1;
                 quantity[index].innerText = currentQuantity;
+
+                totalPrice = totalPrice - price[index];
+                console.log(totalPrice.toFixed(2));
+                totalOrder = totalPrice;
+                console.log("The total amount: ", totalOrder.toFixed(2));
             }
         });
     });
