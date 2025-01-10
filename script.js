@@ -6,10 +6,11 @@ const changeAmount = document.querySelectorAll(".products__menu-item-amount");
 const itemName = document.querySelectorAll(".products__menu-item-name");
 const orderName = document.querySelector(".cart__order-name");
 const orderDetails = document.querySelector(".cart__order-summary");
-const selectedQty = document.querySelector(".cart__order-selected-quantity");
-const selectedPrice = document.querySelector(".cart__order-selected-price");
-const selectedAmount = document.querySelector(".cart__order-selected-amount");
-const orderTotal = document.querySelector(".cart__order-total-order");
+let selectedQty = document.querySelector(".cart__order-selected-quantity");
+let selectedQtyValue = parseFloat(selectedQty.innerText);
+let selectedPrice = document.querySelector(".cart__order-selected-price");
+let selectedAmount = document.querySelector(".cart__order-selected-amount");
+let orderTotal = document.querySelector(".cart__order-total-amount");
 let origPrice = document.querySelectorAll(".products__menu-item-price");
 let addAmount = document.querySelectorAll(
     ".products__menu-item-amount-increment"
@@ -48,6 +49,7 @@ function handleQuantityChange() {
         increment.addEventListener("click", function () {
             currentQuantity[index] += 1;
             quantity[index].innerText = currentQuantity[index];
+            selectedQty.innerText = currentQuantity[index];
             totalAmount();
         });
     });
@@ -57,6 +59,7 @@ function handleQuantityChange() {
             if (currentQuantity[index] > 0) {
                 currentQuantity[index] -= 1;
                 quantity[index].innerText = currentQuantity[index];
+                selectedQty.innerText = currentQuantity[index];
                 totalAmount();
             }
         });
@@ -80,9 +83,16 @@ function totalAmount() {
 function displayCart(index) {
     orderDetails.style.display = "flex";
     orderName.innerText += itemName[index].innerText;
-    selectedQty.innerText += currentQuantity[index];
+
+    // addAmount.forEach((increment) => {
+    //     increment.addEventListener("click", function () {
+    //         selectedQty.innerText = currentQuantity[index];
+    //     });
+    // });
+
+    // selectedQtyValue += selectedQty.innerText;
     selectedPrice.innerText += `$${price[index].toFixed(2)}`;
-    selectedAmount.innerText += selectedPrice.innerText;
+    selectedAmount.innerText = selectedPrice.innerText;
     orderTotal.innerText = selectedAmount.innerText;
     console.log("Current item selected: ", itemName[index].innerText);
 }
