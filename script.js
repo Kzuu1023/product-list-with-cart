@@ -38,6 +38,7 @@ function orderItem() {
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
             displayCart(index);
+            totalAmount();
         });
     });
 
@@ -77,6 +78,9 @@ function totalAmount() {
     });
 
     totalOrder = calculatePrices;
+    selectedPrice.innerText = `$${totalOrder.toFixed(2)}`;
+    selectedAmount.innerText = selectedPrice.innerText;
+    orderTotal.innerText = selectedAmount.innerText;
     console.log("The total amount: ", `$${totalOrder.toFixed(2)}`);
 }
 
@@ -91,9 +95,8 @@ function displayCart(index) {
     // });
 
     // selectedQtyValue += selectedQty.innerText;
-    selectedPrice.innerText += `$${price[index].toFixed(2)}`;
-    selectedAmount.innerText = selectedPrice.innerText;
-    orderTotal.innerText = selectedAmount.innerText;
+    // selectedPrice.innerText += `$${price[index].toFixed(2)}`;
+
     console.log("Current item selected: ", itemName[index].innerText);
 }
 
