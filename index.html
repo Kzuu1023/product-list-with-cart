@@ -542,16 +542,26 @@
 
                 <div id="cart__order">
                     <h2 class="cart__title">
-                        Your Cart <span class="number">(0)</span>
+                        <span id="number">Your Cart (0)</span>
                     </h2>
                     <div class="cart__order-information">
                         <div class="cart__order-summary">
-                            <h3 class="cart__order-name"></h3>
                             <div class="cart__order-details">
-                                <p class="cart__order-selected-quantity"></p>
-                                <p class="cart__order-selected-price"></p>
-                                <p class="cart__order-selected-amount"></p>
+                                <h3 class="cart__order-name"></h3>
+                                <div class="cart__order-numbers">
+                                    <p class="cart__order-selected-quantity">
+                                        1x
+                                    </p>
+                                    <p class="cart__order-selected-price"></p>
+                                    <p class="cart__order-selected-amount"></p>
+                                </div>
                             </div>
+
+                            <img
+                                class="cart__order-remove"
+                                src="assets/images/icon-remove-item.svg"
+                                alt=""
+                            />
                         </div>
                         <div class="cart__order-total">
                             <div class="cart__order-total-items">

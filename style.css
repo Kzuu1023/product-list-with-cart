@@ -202,14 +202,22 @@ img {
 }
 
 .cart__order-summary {
-    display: none;
-    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 1rem;
+    border-bottom: 1px solid var(--rose-100);
 }
 
 .cart__order-details {
     display: flex;
-    border-bottom: 1px solid var(--rose-100);
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+}
+
+.cart__order-numbers {
+    display: flex;
     gap: 1rem;
 }
 
@@ -218,6 +226,7 @@ img {
 }
 
 .cart__order-selected-quantity {
+    font-weight: var(--font-weight-bold);
     color: var(--red);
 }
 
@@ -242,6 +251,17 @@ img {
 
 .cart__order-image {
     width: 10%;
+}
+
+.cart__order-remove {
+    width: 6%;
+    padding: 0.3rem;
+    border: 1px solid var(--rose-400);
+    border-radius: 50%;
+}
+
+.cart__order-remove:hover {
+    border: 1px solid var(--rose-500);
 }
 
 .cart__order-announcement {

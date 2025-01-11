@@ -5,7 +5,9 @@ const menuImg = document.querySelectorAll(".products__menu-item-img img");
 const changeAmount = document.querySelectorAll(".products__menu-item-amount");
 const itemName = document.querySelectorAll(".products__menu-item-name");
 const orderName = document.querySelector(".cart__order-name");
-const orderDetails = document.querySelector(".cart__order-summary");
+const orderSummarize = document.querySelector(".cart__order-summary");
+let orderDetails = document.querySelector(".cart__order-details");
+let itemNumber = document.getElementById("number");
 let selectedQty = document.querySelector(".cart__order-selected-quantity");
 let selectedQtyValue = parseFloat(selectedQty.innerText);
 let selectedPrice = document.querySelector(".cart__order-selected-price");
@@ -37,6 +39,8 @@ function orderItem() {
 
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
+
+            // itemNumber.innerText += currentQuantity[index];
             displayCart(index);
             totalAmount();
         });
@@ -50,7 +54,8 @@ function handleQuantityChange() {
         increment.addEventListener("click", function () {
             currentQuantity[index] += 1;
             quantity[index].innerText = currentQuantity[index];
-            selectedQty.innerText = currentQuantity[index];
+            selectedQty.innerText = `${currentQuantity[index]}x`;
+            itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
             totalAmount();
         });
     });
@@ -60,7 +65,8 @@ function handleQuantityChange() {
             if (currentQuantity[index] > 0) {
                 currentQuantity[index] -= 1;
                 quantity[index].innerText = currentQuantity[index];
-                selectedQty.innerText = currentQuantity[index];
+                selectedQty.innerText = `${currentQuantity[index]}x`;
+                itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
                 totalAmount();
             }
         });
@@ -85,18 +91,8 @@ function totalAmount() {
 }
 
 function displayCart(index) {
-    orderDetails.style.display = "flex";
+    orderSummarize.style.display = "flex";
     orderName.innerText += itemName[index].innerText;
-
-    // addAmount.forEach((increment) => {
-    //     increment.addEventListener("click", function () {
-    //         selectedQty.innerText = currentQuantity[index];
-    //     });
-    // });
-
-    // selectedQtyValue += selectedQty.innerText;
-    // selectedPrice.innerText += `$${price[index].toFixed(2)}`;
-
     console.log("Current item selected: ", itemName[index].innerText);
 }
 
