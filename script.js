@@ -9,7 +9,7 @@ const orderSummarize = document.querySelector(".cart__order-summary");
 let orderDetails = document.querySelector(".cart__order-details");
 let itemNumber = document.getElementById("number");
 let selectedQty = document.querySelector(".cart__order-selected-quantity");
-let selectedQtyValue = parseFloat(selectedQty.innerText);
+
 let selectedPrice = document.querySelector(".cart__order-selected-price");
 let selectedAmount = document.querySelector(".cart__order-selected-amount");
 let orderTotal = document.querySelector(".cart__order-total-amount");
@@ -26,11 +26,14 @@ let price = Array.from(origPrice).map((priceElement) =>
     parseFloat(priceElement.innerText.replace(/[^0-9.-]+/g, ""))
 );
 
+let changeAmounts;
+let menuImgs;
+
 function orderItem() {
     addToCart.forEach((addCart, index) => {
         addCart.addEventListener("click", function () {
-            const changeAmounts = changeAmount[index];
-            const menuImgs = menuImg[index];
+            changeAmounts = changeAmount[index];
+            menuImgs = menuImg[index];
 
             changeAmounts.style.display = "flex";
             addCart.style.display = "none";
@@ -39,8 +42,6 @@ function orderItem() {
 
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
-
-            // itemNumber.innerText += currentQuantity[index];
             displayCart(index);
             totalAmount();
         });
@@ -57,6 +58,8 @@ function handleQuantityChange() {
             selectedQty.innerText = `${currentQuantity[index]}x`;
             itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
             totalAmount();
+            updateDisplayCart();
+            removeItem();
         });
     });
 
@@ -68,6 +71,8 @@ function handleQuantityChange() {
                 selectedQty.innerText = `${currentQuantity[index]}x`;
                 itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
                 totalAmount();
+                updateDisplayCart();
+                removeItem();
             }
         });
     });
@@ -94,6 +99,45 @@ function displayCart(index) {
     orderSummarize.style.display = "flex";
     orderName.innerText += itemName[index].innerText;
     console.log("Current item selected: ", itemName[index].innerText);
+}
+
+function updateDisplayCart() {
+    const cartCount = parseInt(itemNumber.innerText.match(/\d+/)[0]);
+
+    if (cartCount === 0) {
+        emptyCart.style.display = "flex";
+        itemCart.style.display = "none";
+        reset();
+    }
+}
+
+function reset() {
+    orderName.innerText = "";
+    changeAmounts.style.display = "none";
+    menuImgs.style.border = "none";
+    addToCart.forEach((cart) => {
+        cart.style.display = "flex";
+    });
+}
+
+function removeItem() {
+    let totalPrice = 0;
+    let totalOrder = 0;
+    let calculatePrices = 0;
+
+    const remove = document.querySelector(".cart__order-remove");
+    let cartNumbers = parseInt(itemNumber.innerText.match(/\d+/)[0]);
+
+    remove.addEventListener("click", function () {
+        currentQuantity.forEach((quantity, index) => {
+            totalPrice = quantity * price[index];
+            calculatePrices += totalPrice;
+        });
+
+        selectedAmount.innerText = calculatePrices;
+        orderTotal.innerText = selectedAmount.innerText;
+        orderSummarize.style.display = "none";
+    });
 }
 
 orderItem();
