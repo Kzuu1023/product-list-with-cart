@@ -5,11 +5,11 @@ const menuImg = document.querySelectorAll(".products__menu-item-img img");
 const changeAmount = document.querySelectorAll(".products__menu-item-amount");
 const itemName = document.querySelectorAll(".products__menu-item-name");
 const orderName = document.querySelector(".cart__order-name");
+const cartOrderInformation = document.querySelector(".cart__order-information");
 const orderSummarize = document.querySelector(".cart__order-summary");
 let orderDetails = document.querySelector(".cart__order-details");
 let itemNumber = document.getElementById("number");
 let selectedQty = document.querySelector(".cart__order-selected-quantity");
-
 let selectedPrice = document.querySelector(".cart__order-selected-price");
 let selectedAmount = document.querySelector(".cart__order-selected-amount");
 let orderTotal = document.querySelector(".cart__order-total-amount");
@@ -28,6 +28,11 @@ let price = Array.from(origPrice).map((priceElement) =>
 
 let changeAmounts;
 let menuImgs;
+let itemNames = "";
+let itemQuantities = "";
+let itemPrices = "";
+let itemTotalAmount = "";
+let itemOrderTotal = "";
 
 function orderItem() {
     addToCart.forEach((addCart, index) => {
@@ -35,12 +40,15 @@ function orderItem() {
             changeAmounts = changeAmount[index];
             menuImgs = menuImg[index];
 
+            currentQuantity[index] = 1;
+
             changeAmounts.style.display = "flex";
             addCart.style.display = "none";
             changeAmounts.classList.add("selected");
             menuImgs.style.border = "2px solid var(--red)";
 
-            orderName.innerText += itemName[index].innerText;
+            itemNames += itemName[index].innerText;
+            console.log(itemNames);
             console.log("Current item selected: ", itemName[index].innerText);
 
             emptyCart.style.display = "none";
@@ -57,9 +65,8 @@ function handleQuantityChange() {
         increment.addEventListener("click", function () {
             currentQuantity[index] += 1;
             quantity[index].innerText = currentQuantity[index];
-            selectedQty.innerText = `${currentQuantity[index]}x`;
-            itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
-            totalAmount();
+
+            displayCart(index);
             updateDisplayCart();
         });
     });
@@ -69,9 +76,8 @@ function handleQuantityChange() {
             if (currentQuantity[index] > 0) {
                 currentQuantity[index] -= 1;
                 quantity[index].innerText = currentQuantity[index];
-                selectedQty.innerText = `${currentQuantity[index]}x`;
-                itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
-                totalAmount();
+
+                displayCart(index);
                 updateDisplayCart();
             }
         });
@@ -89,19 +95,47 @@ function totalAmount() {
     });
 
     totalOrder = calculatePrices;
-    selectedPrice.innerText = `$${totalOrder.toFixed(2)}`;
-    selectedAmount.innerText = selectedPrice.innerText;
-    orderTotal.innerText = selectedAmount.innerText;
+    itemPrices = `$${totalOrder.toFixed(2)}`;
+    itemTotalAmount = itemPrices;
+    itemOrderTotal = itemTotalAmount;
+
+    console.log("The total amount: ", itemPrices); // Display total amount
     console.log("The total amount: ", `$${totalOrder.toFixed(2)}`);
 }
 
 function displayCart(index) {
     orderSummarize.style.display = "flex";
-    currentQuantity[index] = 1;
-    quantity[index].innerText = currentQuantity[index];
-    selectedQty.innerText = `${currentQuantity[index]}x`;
-    itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
     totalAmount();
+
+    itemQuantities = `${currentQuantity[index]}x`;
+    console.log(itemQuantities);
+    let totalItemCart = 0;
+    currentQuantity.forEach((quantity) => {
+        totalItemCart += quantity;
+    });
+
+    itemNumber.innerText = `Your Cart(${totalItemCart})`;
+    console.log(itemNumber.innerText);
+    orderSummarize.innerHTML = `
+  <div class="cart__order-details">
+                                <h3 class="cart__order-name">${itemNames}</h3>
+                                <div class="cart__order-numbers">
+                                    <p class="cart__order-selected-quantity">
+                                            ${itemQuantities}
+                                    </p>
+                                    <p class="cart__order-selected-price">${itemPrices}</p>
+                                    <p class="cart__order-selected-amount">${itemTotalAmount}</p>
+                                </div>
+                            </div>
+
+                            <img
+                                class="cart__order-remove"
+                                src="assets/images/icon-remove-item.svg"
+                                alt=""
+                            />`;
+
+    // console.log("Updated Item Prices:", itemPrices);
+    // console.log("Updated Total Amount:", itemTotalAmount);
 }
 
 function updateDisplayCart() {
@@ -115,6 +149,8 @@ function updateDisplayCart() {
 }
 
 function reset() {
+    itemNames = "";
+    currentQuantity = Array.from(quantity).map(() => 0);
     orderName.innerText = "";
     changeAmounts.style.display = "none";
     menuImgs.style.border = "none";

@@ -201,12 +201,15 @@ img {
     flex-direction: column;
 }
 
+.cart__order-information {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--rose-100);
+}
+
 .cart__order-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--rose-100);
 }
 
 .cart__order-details {
