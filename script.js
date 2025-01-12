@@ -40,10 +40,12 @@ function orderItem() {
             changeAmounts.classList.add("selected");
             menuImgs.style.border = "2px solid var(--red)";
 
+            orderName.innerText += itemName[index].innerText;
+            console.log("Current item selected: ", itemName[index].innerText);
+
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
             displayCart(index);
-            totalAmount();
         });
     });
 
@@ -59,7 +61,6 @@ function handleQuantityChange() {
             itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
             totalAmount();
             updateDisplayCart();
-            removeItem();
         });
     });
 
@@ -72,7 +73,6 @@ function handleQuantityChange() {
                 itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
                 totalAmount();
                 updateDisplayCart();
-                removeItem();
             }
         });
     });
@@ -97,8 +97,11 @@ function totalAmount() {
 
 function displayCart(index) {
     orderSummarize.style.display = "flex";
-    orderName.innerText += itemName[index].innerText;
-    console.log("Current item selected: ", itemName[index].innerText);
+    currentQuantity[index] = 1;
+    quantity[index].innerText = currentQuantity[index];
+    selectedQty.innerText = `${currentQuantity[index]}x`;
+    itemNumber.innerText = `Your Cart(${currentQuantity[index]})`;
+    totalAmount();
 }
 
 function updateDisplayCart() {
