@@ -133,9 +133,16 @@ function displayCart(index) {
                                 src="assets/images/icon-remove-item.svg"
                                 alt=""
                             />`;
+    orderTotal.innerText = `${itemOrderTotal}`;
 
-    // console.log("Updated Item Prices:", itemPrices);
-    // console.log("Updated Total Amount:", itemTotalAmount);
+    orderSummarize
+        .querySelector(".cart__order-remove")
+        .addEventListener("click", () => {
+            orderSummarize.remove();
+            orderTotal.innerText = `${""}`;
+            emptyCart.style.display = "flex";
+            itemCart.style.display = "none";
+        });
 }
 
 function updateDisplayCart() {
@@ -151,31 +158,11 @@ function updateDisplayCart() {
 function reset() {
     itemNames = "";
     currentQuantity = Array.from(quantity).map(() => 0);
-    orderName.innerText = "";
+
     changeAmounts.style.display = "none";
     menuImgs.style.border = "none";
     addToCart.forEach((cart) => {
         cart.style.display = "flex";
-    });
-}
-
-function removeItem() {
-    let totalPrice = 0;
-    let totalOrder = 0;
-    let calculatePrices = 0;
-
-    const remove = document.querySelector(".cart__order-remove");
-    let cartNumbers = parseInt(itemNumber.innerText.match(/\d+/)[0]);
-
-    remove.addEventListener("click", function () {
-        currentQuantity.forEach((quantity, index) => {
-            totalPrice = quantity * price[index];
-            calculatePrices += totalPrice;
-        });
-
-        selectedAmount.innerText = calculatePrices;
-        orderTotal.innerText = selectedAmount.innerText;
-        orderSummarize.style.display = "none";
     });
 }
 
