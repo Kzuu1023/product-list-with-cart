@@ -9,6 +9,9 @@ const cartOrderInformation = document.querySelector(".cart__order-information");
 const orderSummarize = document.querySelector(".cart__order-summary");
 let orderDetails = document.querySelector(".cart__order-details");
 let itemNumber = document.getElementById("number");
+let selectedQty = document.querySelector(".cart__order-selected-quantity");
+let selectedPrice = document.querySelector(".cart__order-selected-price");
+let selectedAmount = document.querySelector(".cart__order-selected-amount");
 let orderTotal = document.querySelector(".cart__order-total-amount");
 let origPrice = document.querySelectorAll(".products__menu-item-price");
 let addAmount = document.querySelectorAll(
@@ -25,9 +28,11 @@ let price = Array.from(origPrice).map((priceElement) =>
 
 let changeAmounts;
 let menuImgs;
+let itemNames = "";
+let itemQuantities = 0;
+let itemPrices = 0;
 let itemTotalAmount = 0;
 let itemOrderTotal = 0;
-let totalItemCart = 0;
 
 function orderItem() {
     addToCart.forEach((addCart, index) => {
@@ -42,11 +47,13 @@ function orderItem() {
             changeAmounts.classList.add("selected");
             menuImgs.style.border = "2px solid var(--red)";
 
+            itemNames += itemName[index].innerText;
+            console.log(itemNames);
             console.log("Current item selected: ", itemName[index].innerText);
 
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
-            displayCart();
+            displayCart(index);
         });
     });
 
@@ -58,6 +65,7 @@ function handleQuantityChange() {
         increment.addEventListener("click", function () {
             currentQuantity[index] += 1;
             quantity[index].innerText = currentQuantity[index];
+
             displayCart();
             updateDisplayCart();
         });
@@ -88,6 +96,8 @@ function totalAmount() {
 
     totalOrder = calculatePrices;
     itemOrderTotal = `$${totalOrder.toFixed(2)}`;
+
+    console.log("The total amount: ", itemPrices); // Display total amount
     console.log("The total amount: ", `$${totalOrder.toFixed(2)}`);
 }
 
@@ -95,44 +105,44 @@ function displayCart() {
     orderSummarize.style.display = "flex";
     totalAmount();
 
-    let cartDetailsHTML = "";
-    let itemQuantities = 0;
-
+    let totalItemCart = 0;
+    let cartItems = "";
     currentQuantity.forEach((quantity, i) => {
         totalItemCart += quantity;
         itemQuantities = quantity;
-        if (quantity > 0) {
-            itemTotalAmount = `$${(itemQuantities * price[i]).toFixed(2)}`;
-            console.log(itemTotalAmount);
+        itemPrices = `$${price[i].toFixed(2)}`; // Properly formats the price as a string
+        itemTotalAmount = `$${(itemQuantities * price[i]).toFixed(2)}`; // Calculates the total and formats it
 
-            cartDetailsHTML += `
-                <div class="cart__order-details">
-                    <h3 class="cart__order-name">${itemName[i].innerText}</h3>
-                    <div class="cart__order-numbers">
-                        <p class="cart__order-selected-quantity">${itemQuantities}x</p>
-                        <p class="cart__order-selected-price">$${price[
-                            i
-                        ].toFixed(2)}</p>
-                        <p class="cart__order-selected-amount">${itemTotalAmount}</p>
-                    </div>
-                </div>
-            `;
+        if (quantity > 0) {
+            cartItems += `
+            <div class="cart__order-details">
+                                          <h3 class="cart__order-name">${itemName[i].innerText}</h3>
+                                          <div class="cart__order-numbers">
+                                              <p class="cart__order-selected-quantity">
+                                                      ${itemQuantities}x
+                                              </p>
+                                              <p class="cart__order-selected-price">${itemPrices}</p>
+                                              <p class="cart__order-selected-amount">${itemTotalAmount}</p>
+                                          </div>
+                                      </div>
+          
+                                 `;
         }
     });
 
     itemNumber.innerText = `Your Cart(${totalItemCart})`;
 
-    orderSummarize.innerHTML = cartDetailsHTML;
-
+    orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
 
-    if (totalItemCart === 0) {
-        emptyCart.style.display = "flex";
-        itemCart.style.display = "none";
-    } else {
-        emptyCart.style.display = "none";
-        itemCart.style.display = "flex";
-    }
+    // orderSummarize
+    //     .querySelector(".cart__order-remove")
+    //     .addEventListener("click", () => {
+    //         orderSummarize.remove();
+    //         orderTotal.innerText = `${""}`;
+    //         emptyCart.style.display = "flex";
+    //         itemCart.style.display = "none";
+    //     });
 }
 
 function updateDisplayCart() {
@@ -146,7 +156,7 @@ function updateDisplayCart() {
 }
 
 function reset() {
-    let itemNames = Array.from(itemName).map(() => "");
+    itemNames = "";
     currentQuantity = Array.from(quantity).map(() => 0);
 
     changeAmounts.style.display = "none";
