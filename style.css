@@ -202,25 +202,31 @@ img {
 }
 
 .cart__order-information {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--rose-100);
 }
 
 .cart__order-summary {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .cart__order-details {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-bottom: 1px solid var(--rose-100);
 }
 
 .cart__order-numbers {
     display: flex;
+    margin-bottom: 1rem;
     gap: 1rem;
 }
 
