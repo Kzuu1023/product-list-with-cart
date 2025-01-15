@@ -181,22 +181,6 @@ function orderConfirmation() {
                     orderedItemQuantities * orderedItemPrices
                 ).toFixed(2)}`;
                 confirmationModal += `
-
-                 <div class="cart__ordered-modal-card">
-                            <img
-                                class="cart__ordered-confirmed"
-                                src="assets/images/icon-order-confirmed.svg"
-                                alt=""
-                            />
-
-                            <div class="cart__ordered-modal-headings">
-                                <h4 class="cart__ordered-title">
-                                    Order Confirmed
-                                </h4>
-                                <p class="cart__ordered-text">
-                                    We hope enjoy your food!
-                                </p>
-                            </div>
                <div class="cart__ordered-modal-information">
                  <div class="cart__ordered-modal-items">
                 <img
@@ -223,7 +207,7 @@ function orderConfirmation() {
                         ${orderedItemTotalAmount}
                     </p>
               </div>
-              </div
+
             `;
             }
         });
