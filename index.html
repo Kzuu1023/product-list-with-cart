@@ -557,11 +557,7 @@
                                 </div>
                             </div>
 
-                              <img
-                                class="cart__order-remove"
-                                src="assets/images/icon-remove-item.svg"
-                                alt=""
-                            />
+                   
                              -->
                         </div>
                     </div>
@@ -584,6 +580,66 @@
                         <button class="cart__order-button">
                             Confirm Order
                         </button>
+                    </div>
+
+                    <div class="cart__order-modal">
+                        <div class="cart__ordered-modal-card">
+                            <img
+                                class="cart__ordered-confirmed"
+                                src="assets/images/icon-order-confirmed.svg"
+                                alt=""
+                            />
+
+                            <div class="cart__ordered-modal-headings">
+                                <h4 class="cart__ordered-title">
+                                    Order Confirmed
+                                </h4>
+                                <p class="cart__ordered-text">
+                                    We hope enjoy your food!
+                                </p>
+                            </div>
+
+                            <!-- <div class="cart__order-modal-information">
+                                <div class="cart__ordered-modal-information">
+                                    <div class="cart__ordered-modal-items">
+                                        <img
+                                            class="cart__ordered-item-img"
+                                            src="${menuImg[i]?.src}"
+                                            alt="Order Item Image"
+                                        />
+
+                                        <div
+                                            class="cart__ordered-modal-details"
+                                        >
+                                            <h3 class="cart__ordered-name">
+                                                ${itemName[i].innerText}
+                                            </h3>
+                                            <div class="cart__ordered-numbers">
+                                                <p
+                                                    class="cart__ordered-selected-quantity"
+                                                >
+                                                    ${orderedItemQuantities}x
+                                                </p>
+                                                <p
+                                                    class="cart__ordered-selected-price"
+                                                >
+                                                    ${orderedItemPrices[i]}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="cart__ordered-selected-amount">
+                                        ${orderedItemTotalAmount}
+                                    </p>
+                                </div>
+                            </div> -->
+
+                            <div class="cart__order-new-order">
+                                <button class="cart__order-new">
+                                    Start New Order
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

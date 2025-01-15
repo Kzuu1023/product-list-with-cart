@@ -7,6 +7,8 @@ const itemName = document.querySelectorAll(".products__menu-item-name");
 const orderName = document.querySelector(".cart__order-name");
 const cartOrderInformation = document.querySelector(".cart__order-information");
 const orderSummarize = document.querySelector(".cart__order-summary");
+const confirmOrder = document.querySelector(".cart__order-button");
+let orderModal = document.querySelector(".cart__order-modal");
 let orderDetails = document.querySelector(".cart__order-details");
 let itemNumber = document.getElementById("number");
 let selectedQty = document.querySelector(".cart__order-selected-quantity");
@@ -107,15 +109,17 @@ function displayCart() {
 
     let totalItemCart = 0;
     let cartItems = "";
+
     currentQuantity.forEach((quantity, i) => {
         totalItemCart += quantity;
         itemQuantities = quantity;
-        itemPrices = `$${price[i].toFixed(2)}`; // Properly formats the price as a string
-        itemTotalAmount = `$${(itemQuantities * price[i]).toFixed(2)}`; // Calculates the total and formats it
+        itemPrices = `$${price[i].toFixed(2)}`;
+        itemTotalAmount = `$${(itemQuantities * price[i]).toFixed(2)}`;
 
         if (quantity > 0) {
             cartItems += `
             <div class="cart__order-details">
+                                        <div class="cart__order-items">
                                           <h3 class="cart__order-name">${itemName[i].innerText}</h3>
                                           <div class="cart__order-numbers">
                                               <p class="cart__order-selected-quantity">
@@ -124,8 +128,15 @@ function displayCart() {
                                               <p class="cart__order-selected-price">${itemPrices}</p>
                                               <p class="cart__order-selected-amount">${itemTotalAmount}</p>
                                           </div>
-                                      </div>
-          
+                                          </div>
+
+                                               <img
+                class="cart__order-remove"
+                src="assets/images/icon-remove-item.svg"
+                alt=""
+            />
+                                 </div>
+
                                  `;
         }
     });
@@ -135,14 +146,14 @@ function displayCart() {
     orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
 
-    // orderSummarize
-    //     .querySelector(".cart__order-remove")
-    //     .addEventListener("click", () => {
-    //         orderSummarize.remove();
-    //         orderTotal.innerText = `${""}`;
-    //         emptyCart.style.display = "flex";
-    //         itemCart.style.display = "none";
-    //     });
+    orderSummarize
+        .querySelector(".cart__order-remove")
+        .addEventListener("click", () => {
+            orderSummarize.remove();
+            orderTotal.innerText = `${""}`;
+            emptyCart.style.display = "flex";
+            itemCart.style.display = "none";
+        });
 }
 
 function updateDisplayCart() {
@@ -153,6 +164,72 @@ function updateDisplayCart() {
         itemCart.style.display = "none";
         reset();
     }
+}
+
+function orderConfirmation() {
+    let orderedItemQuantities = 0;
+    let orderedItemPrices = 0;
+    let orderedItemTotalAmount = 0;
+    confirmOrder.addEventListener("click", function () {
+        orderModal.style.display = "flex";
+        let confirmationModal = "";
+        currentQuantity.forEach((qty, i) => {
+            if (qty > 0) {
+                orderedItemQuantities = qty;
+                orderedItemPrices = price[i].toFixed(2);
+                orderedItemTotalAmount = `$${(
+                    orderedItemQuantities * orderedItemPrices
+                ).toFixed(2)}`;
+                confirmationModal += `
+
+                 <div class="cart__ordered-modal-card">
+                            <img
+                                class="cart__ordered-confirmed"
+                                src="assets/images/icon-order-confirmed.svg"
+                                alt=""
+                            />
+
+                            <div class="cart__ordered-modal-headings">
+                                <h4 class="cart__ordered-title">
+                                    Order Confirmed
+                                </h4>
+                                <p class="cart__ordered-text">
+                                    We hope enjoy your food!
+                                </p>
+                            </div>
+               <div class="cart__ordered-modal-information">
+                 <div class="cart__ordered-modal-items">
+                <img
+                    class="cart__ordered-item-img"
+                    src="${menuImg[i]?.src}"
+                    alt="Order Item Image"
+                />
+           
+                <div class="cart__ordered-modal-details">
+                    <h3 class="cart__ordered-name">
+                        ${itemName[i].innerText}
+                    </h3>
+                  <div class="cart__ordered-numbers">
+                    <p class="cart__ordered-selected-quantity">
+                        ${orderedItemQuantities}x
+                    </p>
+                    <p class="cart__ordered-selected-price">
+                        ${orderedItemPrices}
+                    </p>
+                    </div>
+                     </div>
+                </div>
+                    <p class="cart__ordered-selected-amount">
+                        ${orderedItemTotalAmount}
+                    </p>
+              </div>
+              </div
+            `;
+            }
+        });
+
+        orderModal.innerHTML = confirmationModal;
+    });
 }
 
 function reset() {
@@ -167,3 +244,4 @@ function reset() {
 }
 
 orderItem();
+orderConfirmation();
