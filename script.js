@@ -9,12 +9,11 @@ const cartOrderInformation = document.querySelector(".cart__order-information");
 const orderSummarize = document.querySelector(".cart__order-summary");
 const confirmOrder = document.querySelector(".cart__order-button");
 let orderModal = document.querySelector(".cart__order-modal");
-let orderedModal = document.querySelector(".cart__order-modal-information");
+let orderedModal = document.querySelector(".cart__ordered-modal-information");
 let orderDetails = document.querySelector(".cart__order-details");
+let orderedItemTotal = document.querySelector(".cart__ordered-amount");
 let itemNumber = document.getElementById("number");
-let selectedQty = document.querySelector(".cart__order-selected-quantity");
-let selectedPrice = document.querySelector(".cart__order-selected-price");
-let selectedAmount = document.querySelector(".cart__order-selected-amount");
+
 let orderTotal = document.querySelector(".cart__order-total-amount");
 let origPrice = document.querySelectorAll(".products__menu-item-price");
 let addAmount = document.querySelectorAll(
@@ -146,7 +145,6 @@ function displayCart() {
 
     orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
-
     orderSummarize
         .querySelector(".cart__order-remove")
         .addEventListener("click", () => {
@@ -182,39 +180,42 @@ function orderConfirmation() {
                 orderedItemTotalAmount = `$${(
                     orderedItemQuantities * orderedItemPrices
                 ).toFixed(2)}`;
-                confirmationModal += `
+                orderedItemTotal.innerText = `${orderTotal.innerText}`;
+                confirmationModal += ` <div class="cart__ordered-modal-items">
+                                        <img
+                                            class="cart__ordered-item-img"
+                                            src="${menuImg[i]?.src}"
+                                            alt="Order Item Image"
+                                        />
 
-               <div class="cart__ordered-modal-information">
-                 <div class="cart__ordered-modal-items">
-                <img
-                    class="cart__ordered-item-img"
-                    src="${menuImg[i]?.src}"
-                    alt="Order Item Image"
-                />
-           
-                <div class="cart__ordered-modal-details">
-                    <h3 class="cart__ordered-name">
-                        ${itemName[i].innerText}
-                    </h3>
-                  <div class="cart__ordered-numbers">
-                    <p class="cart__ordered-selected-quantity">
-                        ${orderedItemQuantities}x
-                    </p>
-                    <p class="cart__ordered-selected-price">
-                        ${orderedItemPrices}
-                    </p>
-                    </div>
-                     </div>
-                </div>
-                    <p class="cart__ordered-selected-amount">
-                        ${orderedItemTotalAmount}
-                    </p>
-              </div>
-          
-            `;
+                                        <div
+                                            class="cart__ordered-modal-details"
+                                        >
+                                            <h3 class="cart__ordered-name">
+                                                ${itemName[i].innerText}
+                                            </h3>
+                                            <div class="cart__ordered-numbers">
+                                                <p
+                                                    class="cart__ordered-selected-quantity"
+                                                >
+                                                    ${orderedItemQuantities}x
+                                                </p>
+                                                <p
+                                                    class="cart__ordered-selected-price"
+                                                >
+                                                    $${orderedItemPrices}
+                                                </p>
+                                            </div>
+                                        </div>
+                                       <p class="cart__ordered-selected-amount">
+                                        ${orderedItemTotalAmount}
+                                        </p>  
+                                    </div>
+                                   `;
             }
         });
 
+        console.log(orderedItemTotal);
         orderedModal.innerHTML = confirmationModal;
     });
 }

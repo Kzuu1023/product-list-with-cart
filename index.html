@@ -600,30 +600,43 @@
                             </div>
 
                             <div class="cart__order-modal-information">
-                                <!-- <div class="cart__ordered-modal-information">
-                                    <div class="cart__ordered-modal-items">
+                                <div class="cart__ordered-modal-information">
+                                    <!-- <div class="cart__ordered-modal-items">
+                                        <img
+                                            class="cart__ordered-item-img"
+                                            src="${menuImg[i]?.src}"
+                                            alt="Order Item Image"
+                                        />
+
                                         <div
                                             class="cart__ordered-modal-details"
                                         >
-                                            <h3 class="cart__ordered-name"></h3>
+                                            <h3 class="cart__ordered-name">
+                                                ${itemName[i].innerText}
+                                            </h3>
                                             <div class="cart__ordered-numbers">
                                                 <p
                                                     class="cart__ordered-selected-quantity"
-                                                ></p>
+                                                >
+                                                    ${orderedItemQuantities}x
+                                                </p>
                                                 <p
                                                     class="cart__ordered-selected-price"
-                                                ></p>
+                                                >
+                                                    ${orderedItemPrices}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p
-                                        class="cart__ordered-selected-amount"
-                                    ></p>
-                                </div> -->
-
+                                    <p class="cart__ordered-selected-amount">
+                                        ${orderedItemTotalAmount}
+                                    </p> -->
+                                </div>
                                 <div class="cart__total-amount-ordered">
-                                    <p class="cart__total-text">Order Total</p>
-                                    <p class="cart__total-amount"></p>
+                                    <p class="cart__ordered-text">
+                                        Order Total
+                                    </p>
+                                    <p class="cart__ordered-amount"></p>
                                 </div>
                             </div>
 
