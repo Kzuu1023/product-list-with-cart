@@ -323,6 +323,11 @@ img {
     padding: 1.2rem;
     gap: 1rem;
 }
+
+.cart__order-modal-information {
+    background-color: var(--rose-50);
+}
+
 .cart__ordered-modal-information {
     display: flex;
     align-items: center;
@@ -383,10 +388,9 @@ img {
 
 .cart__ordered-modal-information {
     padding: 1rem;
-    background-color: var(--rose-50);
 }
 
-.cart__ordered-new {
+.cart__order-new {
     color: var(--white);
     background-color: var(--red);
     padding: 1rem 7.5rem;

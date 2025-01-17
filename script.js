@@ -9,6 +9,7 @@ const cartOrderInformation = document.querySelector(".cart__order-information");
 const orderSummarize = document.querySelector(".cart__order-summary");
 const confirmOrder = document.querySelector(".cart__order-button");
 let orderModal = document.querySelector(".cart__order-modal");
+let orderedModal = document.querySelector(".cart__order-modal-information");
 let orderDetails = document.querySelector(".cart__order-details");
 let itemNumber = document.getElementById("number");
 let selectedQty = document.querySelector(".cart__order-selected-quantity");
@@ -172,6 +173,7 @@ function orderConfirmation() {
     let orderedItemTotalAmount = 0;
     confirmOrder.addEventListener("click", function () {
         orderModal.style.display = "flex";
+
         let confirmationModal = "";
         currentQuantity.forEach((qty, i) => {
             if (qty > 0) {
@@ -181,6 +183,7 @@ function orderConfirmation() {
                     orderedItemQuantities * orderedItemPrices
                 ).toFixed(2)}`;
                 confirmationModal += `
+
                <div class="cart__ordered-modal-information">
                  <div class="cart__ordered-modal-items">
                 <img
@@ -207,12 +210,12 @@ function orderConfirmation() {
                         ${orderedItemTotalAmount}
                     </p>
               </div>
-
+          
             `;
             }
         });
 
-        orderModal.innerHTML = confirmationModal;
+        orderedModal.innerHTML = confirmationModal;
     });
 }
 
