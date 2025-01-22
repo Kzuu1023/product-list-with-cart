@@ -12,8 +12,8 @@ let orderModal = document.querySelector(".cart__order-modal");
 let orderedModal = document.querySelector(".cart__ordered-modal-information");
 let orderDetails = document.querySelector(".cart__order-details");
 let orderedItemTotal = document.querySelector(".cart__ordered-amount");
+let newOrder = document.querySelector(".cart__order-new");
 let itemNumber = document.getElementById("number");
-
 let orderTotal = document.querySelector(".cart__order-total-amount");
 let origPrice = document.querySelectorAll(".products__menu-item-price");
 let addAmount = document.querySelectorAll(
@@ -50,12 +50,9 @@ function orderItem() {
             menuImgs.style.border = "2px solid var(--red)";
 
             itemNames += itemName[index].innerText;
-            console.log(itemNames);
-            console.log("Current item selected: ", itemName[index].innerText);
-
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
-            displayCart(index);
+            displayCart();
         });
     });
 
@@ -67,7 +64,6 @@ function handleQuantityChange() {
         increment.addEventListener("click", function () {
             currentQuantity[index] += 1;
             quantity[index].innerText = currentQuantity[index];
-
             displayCart();
             updateDisplayCart();
         });
@@ -78,7 +74,6 @@ function handleQuantityChange() {
             if (currentQuantity[index] > 0) {
                 currentQuantity[index] -= 1;
                 quantity[index].innerText = currentQuantity[index];
-
                 displayCart();
                 updateDisplayCart();
             }
@@ -145,14 +140,17 @@ function displayCart() {
 
     orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
-    orderSummarize
-        .querySelector(".cart__order-remove")
-        .addEventListener("click", () => {
-            orderSummarize.remove();
-            orderTotal.innerText = `${""}`;
-            emptyCart.style.display = "flex";
-            itemCart.style.display = "none";
+
+    // orderSummarize.querySelector(".cart__order-remove");
+
+    let removeBtn = orderSummarize.querySelectorAll(".cart__order-remove");
+
+    removeBtn.forEach((element, i) => {
+        element.addEventListener("click", (event) => {
+            let itemElement = event.target.parentElement;
+            itemElement.remove();
         });
+    });
 }
 
 function updateDisplayCart() {
@@ -224,12 +222,38 @@ function reset() {
     itemNames = "";
     currentQuantity = Array.from(quantity).map(() => 0);
 
-    changeAmounts.style.display = "none";
-    menuImgs.style.border = "none";
     addToCart.forEach((cart) => {
         cart.style.display = "flex";
+    });
+
+    let cartItem = orderSummarize.querySelectorAll(".cart__order-items");
+
+    cartItem.forEach((perItem) => {
+        perItem.remove();
+    });
+
+    changeAmount.forEach((amountElement) => {
+        amountElement.style.display = "none";
+    });
+
+    menuImg.forEach((imgElement) => {
+        imgElement.style.border = "none";
+    });
+
+    emptyCart.style.display = "flex";
+    itemCart.style.display = "none";
+
+    // addToCart.forEach((cart) => {
+    //     cart.style.display = "flex";
+    // });
+}
+
+function startNewOrder() {
+    newOrder.addEventListener("click", function () {
+        reset();
     });
 }
 
 orderItem();
 orderConfirmation();
+startNewOrder();
