@@ -42,13 +42,12 @@ function orderItem() {
             changeAmounts = changeAmount[index];
             menuImgs = menuImg[index];
 
-            currentQuantity[index] = 1;
-
             changeAmounts.style.display = "flex";
             addCart.style.display = "none";
             changeAmounts.classList.add("selected");
             menuImgs.style.border = "2px solid var(--red)";
 
+            currentQuantity[index] = 1;
             itemNames += itemName[index].innerText;
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
@@ -94,7 +93,6 @@ function totalAmount() {
     totalOrder = calculatePrices;
     itemOrderTotal = `$${totalOrder.toFixed(2)}`;
 
-    console.log("The total amount: ", itemPrices); // Display total amount
     console.log("The total amount: ", `$${totalOrder.toFixed(2)}`);
 }
 
@@ -141,14 +139,39 @@ function displayCart() {
     orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
 
-    // orderSummarize.querySelector(".cart__order-remove");
+    removeItem(orderSummarize, itemTotalAmount, itemQuantities);
+}
 
-    let removeBtn = orderSummarize.querySelectorAll(".cart__order-remove");
+function removeItem(orderCartSummarize, cartAmountTotal, orderQuantities) {
+    let removeBtn = orderCartSummarize.querySelectorAll(".cart__order-remove");
 
     removeBtn.forEach((element, i) => {
         element.addEventListener("click", (event) => {
-            let itemElement = event.target.parentElement;
-            itemElement.remove();
+            let itemElement = event.target.closest(".cart__order-details");
+
+            let itemTotalAmountNumber = parseFloat(cartAmountTotal);
+            let cartTotalAmounts = parseFloat(itemTotalAmountNumber.toFixed(2));
+
+            let cartCurrentTotalAmount = parseFloat(
+                orderTotal.innerText.replace(/[^0-9.-]+/g, "")
+            );
+
+            let updatedTotalAmount = cartCurrentTotalAmount - cartTotalAmounts;
+
+            orderTotal.innerText = `$${updatedTotalAmount.toFixed(2)}`;
+
+            currentQuantity[i] = 0;
+
+            if (itemElement) {
+                itemElement.remove();
+                menuImg[i].style.border = "none";
+                changeAmount[i].style.display = "none";
+                addToCart[i].style.display = "flex";
+                quantity[i].innerText = 1;
+                orderQuantities -= 1;
+            }
+
+            displayCart();
         });
     });
 }
@@ -159,8 +182,27 @@ function updateDisplayCart() {
     if (cartCount === 0) {
         emptyCart.style.display = "flex";
         itemCart.style.display = "none";
-        reset();
+        addToCart.forEach((cart) => {
+            cart.style.display = "flex";
+        });
+
+        menuImg.forEach((img) => {
+            img.style.border = "none";
+        });
+
+        changeAmount.forEach((backToCart) => {
+            backToCart.style.display = "none";
+        });
     }
+
+    currentQuantity.forEach((qty, i) => {
+        if (qty === 0) {
+            menuImg[i].style.border = "none";
+            addToCart[i].style.display = "flex";
+            changeAmount[i].style.display = "none";
+            quantity[i].innerText = 1;
+        }
+    });
 }
 
 function orderConfirmation() {
@@ -222,10 +264,6 @@ function reset() {
     itemNames = "";
     currentQuantity = Array.from(quantity).map(() => 0);
 
-    addToCart.forEach((cart) => {
-        cart.style.display = "flex";
-    });
-
     let cartItem = orderSummarize.querySelectorAll(".cart__order-items");
 
     cartItem.forEach((perItem) => {
@@ -243,9 +281,11 @@ function reset() {
     emptyCart.style.display = "flex";
     itemCart.style.display = "none";
 
-    // addToCart.forEach((cart) => {
-    //     cart.style.display = "flex";
-    // });
+    addToCart.forEach((cart) => {
+        cart.style.display = "flex";
+    });
+
+    // itemQuantities -= 1;
 }
 
 function startNewOrder() {
