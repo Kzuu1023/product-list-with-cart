@@ -48,6 +48,7 @@ function orderItem() {
             menuImgs.style.border = "2px solid var(--red)";
 
             currentQuantity[index] = 1;
+
             itemNames += itemName[index].innerText;
             emptyCart.style.display = "none";
             itemCart.style.display = "flex";
@@ -293,6 +294,9 @@ function reset() {
 function startNewOrder() {
     newOrder.addEventListener("click", function () {
         orderModal.style.display = "none";
+        quantity.forEach((qty) => {
+            qty.innerText = 1;
+        });
         reset();
     });
 }
