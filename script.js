@@ -147,8 +147,8 @@ function removeItem(orderCartSummarize, cartAmountTotal, orderQuantities) {
 
     removeBtn.forEach((element, i) => {
         element.addEventListener("click", (event) => {
-            let itemElement = event.target.closest(".cart__order-details");
-
+            //     let itemElement = event.target.closest(".cart__order-details");
+            let itemElement = event.target.parentElement;
             let itemTotalAmountNumber = parseFloat(cartAmountTotal);
             let cartTotalAmounts = parseFloat(itemTotalAmountNumber.toFixed(2));
 
@@ -172,6 +172,7 @@ function removeItem(orderCartSummarize, cartAmountTotal, orderQuantities) {
             }
 
             displayCart();
+            updateDisplayCart();
         });
     });
 }
@@ -255,6 +256,7 @@ function orderConfirmation() {
             }
         });
 
+        orderModal.style.display = "flex";
         console.log(orderedItemTotal);
         orderedModal.innerHTML = confirmationModal;
     });
@@ -290,6 +292,7 @@ function reset() {
 
 function startNewOrder() {
     newOrder.addEventListener("click", function () {
+        orderModal.style.display = "none";
         reset();
     });
 }
