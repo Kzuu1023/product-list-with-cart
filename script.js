@@ -140,41 +140,59 @@ function displayCart() {
     orderSummarize.innerHTML = cartItems;
     orderTotal.innerText = `${itemOrderTotal}`;
 
-    removeItem(orderSummarize, itemTotalAmount, itemQuantities);
+    removeItem(orderSummarize, itemQuantities);
 }
 
-function removeItem(orderCartSummarize, cartAmountTotal, orderQuantities) {
-    let removeBtn = orderCartSummarize.querySelectorAll(".cart__order-remove");
+function removeItem(orderCartSummarize, orderQuantities) {
+    orderCartSummarize.addEventListener("click", (event) => {
+        // Ensure the clicked element is the remove button
 
-    removeBtn.forEach((element, i) => {
-        element.addEventListener("click", (event) => {
-            //     let itemElement = event.target.closest(".cart__order-details");
-            let itemElement = event.target.parentElement;
-            let itemTotalAmountNumber = parseFloat(cartAmountTotal);
-            let cartTotalAmounts = parseFloat(itemTotalAmountNumber.toFixed(2));
+        if (event.target.classList.contains("cart__order-remove")) {
+            let itemElement = event.target.closest(".cart__order-details");
 
-            let cartCurrentTotalAmount = parseFloat(
-                orderTotal.innerText.replace(/[^0-9.-]+/g, "")
-            );
+            quantity.forEach((qty, index) => {
+                if (
+                    itemElement &&
+                    itemElement.querySelector(".cart__order-name").innerText ===
+                        itemName[index].innerText
+                ) {
+                    let itemTotalAmountValue =
+                        price[index] * currentQuantity[index];
 
-            let updatedTotalAmount = cartCurrentTotalAmount - cartTotalAmounts;
+                    let cartTotalAmounts = parseFloat(
+                        itemTotalAmountValue.toFixed(2)
+                    );
 
-            orderTotal.innerText = `$${updatedTotalAmount.toFixed(2)}`;
+                    let cartCurrentTotalAmount = parseFloat(
+                        orderTotal.innerText.replace(/[^0-9.-]+/g, "")
+                    );
 
-            currentQuantity[i] = 0;
+                    let updatedTotalAmount =
+                        cartCurrentTotalAmount - cartTotalAmounts;
 
-            if (itemElement) {
-                itemElement.remove();
-                menuImg[i].style.border = "none";
-                changeAmount[i].style.display = "none";
-                addToCart[i].style.display = "flex";
-                quantity[i].innerText = 1;
-                orderQuantities -= 1;
-            }
+                    orderTotal.innerText = `$${updatedTotalAmount.toFixed(2)}`;
 
-            displayCart();
-            updateDisplayCart();
-        });
+                    itemElement.remove();
+                    currentQuantity[index] = 0;
+                    menuImg[index].style.border = "none";
+                    changeAmount[index].style.display = "none";
+                    addToCart[index].style.display = "flex";
+                    orderQuantities -= 1;
+
+                    // const totalItems = currentQuantity.reduce(
+                    //     (sum, qty) => sum + qty,
+                    //     0
+                    // );
+                    // orderQuantities = totalItems; // Update the orderQuantities variable
+
+                    // // Update the UI with the total items count
+                    // itemNumber.innerText = `Your Cart(${totalItems})`;
+                }
+
+                displayCart();
+                updateDisplayCart();
+            });
+        }
     });
 }
 
@@ -195,6 +213,9 @@ function updateDisplayCart() {
         changeAmount.forEach((backToCart) => {
             backToCart.style.display = "none";
         });
+    } else {
+        emptyCart.style.display = "none";
+        itemCart.style.display = "flex";
     }
 
     currentQuantity.forEach((qty, i) => {
